@@ -15,15 +15,32 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        <div className="flex min-h-screen">
-          <nav className="flex flex-col pt-8 pl-8 pr-8 gap-2 w-48 min-w-[160px]">
-            <NavBar />
-          </nav>
-          <main className="flex-1 flex justify-center items-start">
-            <div className="w-full max-w-3xl" style={{ width: '60%' }}>
+        <div className="flex min-h-screen w-full">
+          <aside
+            className="relative flex flex-col items-center justify-start"
+            style={{ width: '15vw', minWidth: 120, maxWidth: 320 }}
+          >
+            <div className="w-full h-full relative">
+              <NavBar />
+            </div>
+          </aside>
+          <main
+            className="flex-1 flex justify-center items-start"
+            style={{ width: '60vw', minWidth: 240, maxWidth: 1200 }}
+          >
+            <div
+              className="w-full max-w-3xl flex flex-col items-center"
+              style={{ marginTop: '10vh' }}
+            >
               {children}
             </div>
           </main>
+          <aside
+            className="flex flex-col items-center justify-center"
+            style={{ width: '25vw', minWidth: 120, maxWidth: 400 }}
+          >
+            <button className="p-4 rounded bg-gray-200 hover:bg-gray-300 mt-8">Placeholder</button>
+          </aside>
         </div>
       </body>
     </html>

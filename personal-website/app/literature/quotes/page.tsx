@@ -1,7 +1,7 @@
 export default function QuotesPage() {
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">Quotes</h1>
+    <div className="w-full flex flex-col items-center" style={{ marginTop: '10vh' }}>
+      <h1 className="text-6xl font-extrabold mb-8">Quotes</h1>
       <p>Welcome to the Quotes subpage under Literature.</p>
     </div>
   );

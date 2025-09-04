@@ -1,7 +1,7 @@
 export default function LiteraturePage() {
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">Literature</h1>
+    <div className="w-full flex flex-col items-center" style={{ marginTop: '10vh' }}>
+      <h1 className="text-6xl font-extrabold mb-8">Literature</h1>
       <p>Welcome to the Literature page.</p>
     </div>
   );
