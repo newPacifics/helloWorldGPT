@@ -1,17 +1,17 @@
 import Postcard from "../components/ui/postcard";
 import { getPostsBySlugs } from "../lib/posts";
 
-function getTechiePosts() {
-  const slugs = ["a-techie-post1", "sample-techie2"]; // explicit assignment
+function getSevlogPosts() {
+  const slugs = ["sevlog-sample1", "sevlog2", "sevloggggg3", "sevlog-test4"]; // explicit assignment
   return getPostsBySlugs(slugs);
 }
 
-export default function TechiePage() {
-  const posts = getTechiePosts();
+export default function SevlogPage() {
+  const posts = getSevlogPosts();
 
   return (
     <div className="w-full flex flex-col items-center" style={{ marginTop: '10vh' }}>
-      <h1 className="text-6xl font-extrabold mb-8">Techie</h1>
+      <h1 className="text-6xl font-extrabold mb-8">Sev'Log</h1>
 
       <div className="max-w-2xl w-full flex flex-col gap-4">
         {posts.map((post) => (
@@ -28,3 +28,5 @@ export default function TechiePage() {
     </div>
   );
 }
+
+
