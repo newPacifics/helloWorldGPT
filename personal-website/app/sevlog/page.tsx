@@ -35,7 +35,7 @@ function buildTwoLinePreviewFromContent(content: string, maxWords = 40, maxChars
 }
 
 function getSevlogPosts() {
-  const slugs = ["study-plan-nvidia-genai.mdx1", "sevlog2", "sevloggggg3", "sevlog-test4"]; // explicit assignment
+  const slugs = ["study-plan-nvidia-genai", "sevlog2", "sevloggggg3", "sevlog-test4"]; // explicit assignment
   return slugs
     .map((slug) => {
       const post = getPostBySlug(slug);
