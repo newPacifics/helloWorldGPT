@@ -35,20 +35,24 @@ export default function Postcard({
     "p-4 sm:p-5 shadow-sm transition-shadow hover:shadow-md",
     "text-gray-800 dark:text-gray-100",
   ]
+    .concat(href ? ["cursor-pointer"] : [])
     .concat(className ? [className] : [])
     .join(" ");
 
-  const titleNode = href ? (
-    <Link href={href} className="no-underline">
-      <h3 className="text-lg font-semibold tracking-tight text-gray-900 dark:text-gray-50 group-hover:underline">
-        {title}
-      </h3>
-    </Link>
-  ) : (
+  const titleNode = (
     <h3 className="text-lg font-semibold tracking-tight text-gray-900 dark:text-gray-50">{title}</h3>
   );
+  
+  const footerNode = (
+  <footer className="mt-3 flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+    <time dateTime={date instanceof Date ? date.toISOString() : new Date(date).toISOString()}>
+      {formatDateForDisplay(date)}
+    </time>
+    <span aria-hidden>•</span>
+    <span>{typeof readingTime === "number" ? `${readingTime} min read` : readingTime}</span>
+  </footer>);
 
-  return (
+  const CardInner = (
     <article className={containerClasses} aria-label={title}>
       <header className="mb-2">{titleNode}</header>
 
@@ -64,17 +68,19 @@ export default function Postcard({
         {preview}
       </p>
 
-      <footer className="mt-3 flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-        <time dateTime={
-          date instanceof Date ? date.toISOString() : new Date(date).toISOString()
-        }>
-          {formatDateForDisplay(date)}
-        </time>
-        <span aria-hidden>•</span>
-        <span>{typeof readingTime === "number" ? `${readingTime} min read` : readingTime}</span>
-      </footer>
+      {footerNode}
     </article>
   );
+
+  if (href) {
+    return (
+      <Link href={href} aria-label={`Open ${title}`} className="block no-underline">
+        {CardInner}
+      </Link>
+    );
+  }
+
+  return CardInner;
 }
 
 
