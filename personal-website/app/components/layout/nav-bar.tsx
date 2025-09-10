@@ -24,7 +24,7 @@ export default function NavBar() {
       </div> */}
       <ul className="flex flex-col gap-3 text-[1.0rem] font-semibold items-start w-full">
         <li className="w-full">
-          <Link className="hover:underline pl-2 flex items-center gap-2" href="/techie">
+          <Link className="hover:underline pl-2 flex items-center gap-2" href="/engineering">
             <img src="/icons/carbon-machine-learning-model.svg" alt="" aria-hidden="true" className="h-5 w-5" />
             <span>Engineering</span>
           </Link>
