@@ -30,21 +30,19 @@ export default function Postcard({
   className,
 }: PostcardProps) {
   const containerClasses = [
-    "group rounded-xl border bg-gray-50/80 dark:bg-neutral-900/70",
-    "border-gray-200 dark:border-neutral-800",
-    "p-4 sm:p-5 shadow-sm transition-shadow hover:shadow-md",
-    "text-gray-800 dark:text-gray-100",
+    "group rounded-xl border bg-card text-card-foreground border-border",
+    "p-4 sm:p-5 shadow-sm transition-shadow hover:shadow-md hover:bg-muted/60",
   ]
     .concat(href ? ["cursor-pointer"] : [])
     .concat(className ? [className] : [])
     .join(" ");
 
   const titleNode = (
-    <h3 className="text-lg font-semibold tracking-tight text-gray-900 dark:text-gray-50">{title}</h3>
+    <h3 className="text-lg font-semibold tracking-tight text-foreground">{title}</h3>
   );
   
   const footerNode = (
-  <footer className="mt-3 flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+  <footer className="mt-3 flex items-center gap-2 text-xs text-muted-foreground">
     <time dateTime={date instanceof Date ? date.toISOString() : new Date(date).toISOString()}>
       {formatDateForDisplay(date)}
     </time>
@@ -57,7 +55,7 @@ export default function Postcard({
       <header className="mb-2">{titleNode}</header>
 
       <p
-        className="text-sm leading-6 text-gray-700 dark:text-gray-300"
+        className="text-sm leading-6 text-muted-foreground"
         style={{
           display: "-webkit-box",
           WebkitLineClamp: 2,

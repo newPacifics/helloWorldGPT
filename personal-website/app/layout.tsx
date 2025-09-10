@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import "./globals.css";
 import NavBar from "./components/layout/nav-bar";
+import ThemeToggle from "./components/ui/theme-toggle";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,11 +19,16 @@ export default function RootLayout({
       <body className="antialiased">
         <div className="flex min-h-screen w-full">
           <aside
-            className="relative flex flex-col items-center justify-start"
+            className="relative"
             style={{ width: '15vw', minWidth: 120, maxWidth: 320 }}
           >
-            <div className="w-full h-full relative">
-              <NavBar />
+            <div className="sticky top-0 w-full">
+              <div className="flex flex-col h-[100vh]">
+                <NavBar />
+                <div className="mt-auto w-full px-6 pt-2 pb-6">
+                  <ThemeToggle />
+                </div>
+              </div>
             </div>
           </aside>
           <main
@@ -30,7 +37,7 @@ export default function RootLayout({
           >
             <div
               className="w-full max-w-3xl flex flex-col items-center"
-              style={{ marginTop: '10vh' }}
+              style={{ marginTop: '5vh', marginLeft: '2vw', marginRight: '2vw' }}
             >
               {children}
             </div>
