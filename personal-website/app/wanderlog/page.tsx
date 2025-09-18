@@ -58,7 +58,7 @@ export default function WanderlogPage() {
                         <img src="/icons/wood-pile.svg" alt="" aria-hidden="true" className="h-12 w-12" />
                     </h1>
                     <p className="text-base leading-7 text-muted-foreground">
-                        Hi there, my curious friends! Ready to drill down the rabbit hole of building, reading, and learning?
+                        Hi there, my curious friends! Ready to slide down into the rabbit hole of building, reading, and learning?
                         This is my personal log of ideas, drafts, and experiments collected along the way.
                     </p>
                     <footer className="flex items-center gap-4 text-muted-foreground">

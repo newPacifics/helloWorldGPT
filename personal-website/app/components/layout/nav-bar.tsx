@@ -25,7 +25,7 @@ export default function NavBar() {
       <ul className="flex flex-col gap-3 text-[1.0rem] font-semibold items-start w-full">
         <li className="w-full">
           <Link className="hover:underline pl-2 flex items-center gap-2" href="/engineering">
-            <img src="/icons/carbon-machine-learning-model.svg" alt="" aria-hidden="true" className="h-5 w-5" />
+            <img src="/icons/carbon-machine-learning-model.svg" alt="" aria-hidden="true" className="h-5.5 w-5.5" />
             <span>Engineering</span>
           </Link>
         </li>
@@ -34,7 +34,7 @@ export default function NavBar() {
             className="text-left w-full focus:outline-none hover:underline font-semibold pl-2 flex items-center gap-2"
             onClick={() => setLiteratureOpen((open) => !open)}
           >
-            <img src="/icons/entrance-stairs.svg" alt="" aria-hidden="true" className="h-5 w-5" />
+            <img src="/icons/entrance-stairs.svg" alt="" aria-hidden="true" className="h-6 w-6 -ml-0.5" />
             <span>Liberal Arts</span>
             <svg 
               className={`h-3 w-3 transition-transform duration-200 ${literatureOpen ? 'rotate-90' : ''}`}
@@ -50,14 +50,20 @@ export default function NavBar() {
             <ul className="pl-6 flex flex-col gap-2 text-sm font-medium items-start mt-1">
               <li className="w-full">
                 <Link className="hover:underline pl-2 flex items-center gap-2" href="/literature/quotes">
-                  <img src="/icons/icon-06.svg" alt="" aria-hidden="true" className="h-4 w-4" />
+                  <img src="/icons/et-quote.svg" alt="" aria-hidden="true" className="h-4 w-4" />
                   <span>Quotes</span>
                 </Link>
               </li>
               <li className="w-full">
-                <Link className="hover:underline pl-2 flex items-center gap-2" href="/literature/readings">
-                  <img src="/icons/icon-07.svg" alt="" aria-hidden="true" className="h-4 w-4" />
-                  <span>Readings</span>
+                <Link className="hover:underline pl-2 flex items-center gap-2" href="/literature/library">
+                  <img src="/icons/streamline-freehand--disability-blind-read.svg" alt="" aria-hidden="true" className="h-4 w-4" />
+                  <span>Library</span>
+                </Link>
+              </li>
+              <li className="w-full">
+                <Link className="hover:underline pl-2 flex items-center gap-2" href="/literature/vocab">
+                  <img src="/icons/streamline-ultimate--curly-brackets.svg" alt="" aria-hidden="true" className="h-4 w-4" />
+                  <span>Vocab</span>
                 </Link>
               </li>
             </ul>
@@ -65,13 +71,13 @@ export default function NavBar() {
         </li>
         <li className="w-full">
           <Link className="hover:underline pl-2 flex items-center gap-2" href="/search">
-            <img src="/icons/mdi--tag-search-outline.svg" alt="" aria-hidden="true" className="h-5 w-5" />
+            <img src="/icons/streamline-ultimate--network-search.svg" alt="" aria-hidden="true" className="h-5 w-5" />
             <span>Search</span>
           </Link>
         </li>
         <li className="w-full">
           <Link className="hover:underline pl-2 flex items-center gap-2" href="/contact">
-            <img src="/icons/gravity-ui--card-heart.svg" alt="" aria-hidden="true" className="h-5 w-5" />
+            <img src="/icons/streamline-ultimate--card-game-heart.svg" alt="" aria-hidden="true" className="h-5 w-5" />
             <span>Contact</span>
           </Link>
         </li>
