@@ -1,9 +1,9 @@
 import StickerCard from "../../components/ui/sticker-card";
-import { getAllVocabularyData } from "../../lib/sticker-cards";
+import { getAllVocabulary } from "../../lib/content";
 
 export default function VocabPage() {
-  // Load vocabulary data from MDX files
-  const vocabData = getAllVocabularyData();
+  // Load vocabulary data from Contentlayer
+  const vocabulary = getAllVocabulary();
 
   return (
     <div className="w-full flex flex-col items-center" style={{ marginTop: '5vh' }}>
@@ -19,8 +19,12 @@ export default function VocabPage() {
         
         <div className="w-full flex flex-col gap-6">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {vocabData.map((vocab, index) => (
-              <StickerCard key={index} {...vocab} />
+            {vocabulary.map((vocab, index) => (
+              <StickerCard 
+                key={index} 
+                content={vocab.body.raw} 
+                date={vocab.date} 
+              />
             ))}
           </div>
         </div>

@@ -1,9 +1,24 @@
 import { notFound } from "next/navigation";
-import { getPostBySlug } from "@/app/lib/posts";
+import { getPostBySlug, getAllPosts } from "@/app/lib/content";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
 export function generateStaticParams() {
-  return [] as any[];
+  return getAllPosts().map((post) => {
+    // Extract the slug from the full path
+    let slug = post.slug;
+    
+    // Remove 'posts/' prefix
+    if (slug.startsWith('posts/')) {
+      slug = slug.replace('posts/', '');
+    }
+    
+    // Handle nested paths
+    if (slug.startsWith('engineering/') || slug.startsWith('wanderlog/')) {
+      slug = slug.split('/')[1]; // Get just the filename without the folder
+    }
+    
+    return { slug };
+  });
 }
 
 export default function PostPage({ params }: any) {
@@ -13,16 +28,18 @@ export default function PostPage({ params }: any) {
   return (
     <article className="prose dark:prose-invert max-w-none">
       <header className="mb-6">
-        <h1 className="text-4xl font-bold">{post.meta.title}</h1>
+        {post.title && (
+          <h1 className="text-4xl font-bold">{post.title}</h1>
+        )}
         <p className="text-sm text-gray-500 mt-2">
-          <time dateTime={new Date(post.meta.date).toISOString()}>
-            {new Date(post.meta.date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
+          <time dateTime={new Date(post.date).toISOString()}>
+            {new Date(post.date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
           </time>
           <span className="mx-2">•</span>
-          <span>{post.meta.readingTime}</span>
+          <span>{post.readingTime}</span>
         </p>
       </header>
-      <MDXRemote source={post.content} />
+      <MDXRemote source={post.body.raw} />
     </article>
   );
 }

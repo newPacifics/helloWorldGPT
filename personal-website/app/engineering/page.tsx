@@ -1,14 +1,10 @@
 import Postcard from "../components/ui/postcard";
 import ProductCard from "../components/ui/product-card";
-import { getPostsBySlugs } from "../lib/posts";
-
-function getEngineeringPosts() {
-  const slugs = ["a-techie-post1", "sample-techie2"]; // explicit assignment
-  return getPostsBySlugs(slugs);
-}
+import { getAllEngineeringPosts } from "../lib/content";
+import type { Content } from "../lib/content";
 
 export default function EngineeringPage() {
-  const posts = getEngineeringPosts();
+  const posts = getAllEngineeringPosts();
 
   // Sample product data - replace with your actual projects
   const products = [
@@ -55,10 +51,10 @@ export default function EngineeringPage() {
           <Postcard
             key={post.slug}
             title={post.title}
-            preview={post.description ?? ""}
+            content={post.body.raw}
             date={post.date}
             readingTime={post.readingTime}
-            href={`/posts/${post.slug}`}
+            href={post.url}
           />
         ))}
       </div>

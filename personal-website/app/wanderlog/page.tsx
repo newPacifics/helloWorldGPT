@@ -1,5 +1,6 @@
 import Postcard from "../components/ui/postcard";
-import { getPostBySlug } from "../lib/posts";
+import { getAllWanderlogPosts } from "../lib/content";
+import type { Content } from "../lib/content";
 
 function stripMarkdownMdx(input: string): string {
     // remove code fences
@@ -34,20 +35,8 @@ function buildTwoLinePreviewFromContent(content: string, maxWords = 40, maxChars
     return result || words.slice(0, Math.min(words.length, maxWords)).join(" ");
 }
 
-function getWanderlogPosts() {
-    const slugs = ["study-plan-nvidia-genai", "sevlog2", "sevloggggg3", "sevlog-test4"]; // explicit assignment
-    return slugs
-        .map((slug) => {
-            const post = getPostBySlug(slug);
-            if (!post) return null;
-            const preview = buildTwoLinePreviewFromContent(post.content);
-            return { ...post.meta, preview };
-        })
-        .filter((p): p is { title: string; date: string; description?: string; slug: string; readingTime: string; preview: string } => Boolean(p));
-}
-
 export default function WanderlogPage() {
-    const posts = getWanderlogPosts();
+    const posts = getAllWanderlogPosts();
 
     return (
         <div className="w-full flex flex-col items-center" style={{ marginTop: '5vh' }}>
@@ -108,10 +97,10 @@ export default function WanderlogPage() {
                         <Postcard
                             key={post.slug}
                             title={post.title}
-                            preview={post.preview}
+                            content={post.body.raw}
                             date={post.date}
                             readingTime={post.readingTime}
-                            href={`/posts/${post.slug}`}
+                            href={post.url}
                         />
                     ))}
                 </div>

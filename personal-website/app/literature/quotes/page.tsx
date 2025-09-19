@@ -1,9 +1,9 @@
 import StickerCard from "../../components/ui/sticker-card";
-import { getAllQuotesData } from "../../lib/sticker-cards";
+import { getAllQuotes } from "../../lib/content";
 
 export default function QuotesPage() {
-  // Load quote data from MDX files
-  const quotesData = getAllQuotesData();
+  // Load quote data from Contentlayer
+  const quotes = getAllQuotes();
 
   return (
     <div className="w-full flex flex-col items-center" style={{ marginTop: '5vh' }}>
@@ -19,8 +19,12 @@ export default function QuotesPage() {
         
         <div className="w-full flex flex-col gap-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-            {quotesData.map((quote, index) => (
-              <StickerCard key={index} {...quote} />
+            {quotes.map((quote, index) => (
+              <StickerCard 
+                key={index} 
+                content={quote.body.raw} 
+                date={quote.date} 
+              />
             ))}
           </div>
         </div>
