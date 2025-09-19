@@ -33,18 +33,18 @@ export default function RootLayout({
           </aside>
           <main
             className="flex-1 flex justify-center items-start"
-            style={{ width: '60vw', minWidth: 240, maxWidth: 1200 }}
+            style={{ width: '65vw', minWidth: 240, maxWidth: 1200 }}
           >
             <div
               className="w-full max-w-3xl flex flex-col items-center"
-              style={{ marginTop: '5vh', marginLeft: '2vw', marginRight: '2vw' }}
+              style={{ margin:'5vh 3vw 5vh 3vw' }}
             >
               {children}
             </div>
           </main>
           <aside
             className="flex flex-col items-center justify-center"
-            style={{ width: '25vw', minWidth: 120, maxWidth: 400 }}
+            style={{ width: '20vw', minWidth: 120, maxWidth: 400 }}
           >
             <button className="p-4 rounded bg-gray-200 hover:bg-gray-300 mt-8">Placeholder</button>
           </aside>

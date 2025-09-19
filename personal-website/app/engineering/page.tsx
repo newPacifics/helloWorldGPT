@@ -1,5 +1,6 @@
 import Postcard from "../components/ui/postcard";
 import ProductCard from "../components/ui/product-card";
+import PageLayout from "../components/layout/page-layout";
 import { getAllEngineeringPosts } from "../lib/content";
 import type { Content } from "../lib/content";
 
@@ -25,16 +26,12 @@ export default function EngineeringPage() {
   ];
 
   return (
-    <div className="w-full flex flex-col items-center" style={{ marginTop: '1vh' }}>
-      <h1 className="text-6xl font-extrabold mb-2">Engineering</h1>
-
-      {/* Intro Section */}
-      <div className="max-w-2xl w-full mb-1 text-center">
-        <h2 className="text-2xl font-semibold mb-4 text-muted-foreground">Technical Projects & Thoughts</h2>
-      </div>
-
-      <div className="max-w-2xl w-full flex flex-col gap-4">
-        {/* Product Cards First */}
+    <PageLayout
+      title="Engineering"
+      description="Technical projects and thoughts on software development, AI, and technology."
+    >
+      {/* Product Cards First */}
+      <div className="grid grid-cols-1 gap-6">
         {products.map((product, index) => (
           <ProductCard
             key={index}
@@ -45,8 +42,10 @@ export default function EngineeringPage() {
             category={product.category}
           />
         ))}
-        
-        {/* Post Cards After */}
+      </div>
+      
+      {/* Post Cards After */}
+      <div className="grid grid-cols-1 gap-6">
         {posts.map((post) => (
           <Postcard
             key={post.slug}
@@ -58,6 +57,6 @@ export default function EngineeringPage() {
           />
         ))}
       </div>
-    </div>
+    </PageLayout>
   );
 }
