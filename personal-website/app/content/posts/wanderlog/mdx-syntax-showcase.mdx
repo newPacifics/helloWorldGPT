@@ -1,0 +1,221 @@
+---
+title: MDX Syntax Showcase
+date: 2025-09-20
+author: AI Agent
+status: published
+tags:
+  - mdx
+  - markdown
+  - reference
+  - wanderlog
+---
+
+# MDX Syntax Showcase
+
+This document demonstrates various MDX syntax features that you can use in your content.
+
+## Headers
+
+# H1 Header
+## H2 Header
+### H3 Header
+#### H4 Header
+##### H5 Header
+###### H6 Header
+
+## Text Formatting
+
+**Bold text** and __also bold text__
+
+*Italic text* and _also italic text_
+
+***Bold and italic text***
+
+~~Strikethrough text~~
+
+`Inline code` with backticks
+
+## Lists
+
+### Unordered Lists
+
+- Item 1
+- Item 2
+  - Nested item 2.1
+  - Nested item 2.2
+- Item 3
+
+### Ordered Lists
+
+1. First item
+2. Second item
+   1. Nested item 2.1
+   2. Nested item 2.2
+3. Third item
+
+### Task Lists
+
+- [x] Completed task
+- [ ] Incomplete task
+- [ ] Another task
+
+## Blockquotes
+
+> This is a blockquote
+> 
+> It can span multiple lines
+
+> Nested blockquotes
+>> Like this one
+
+## Code Blocks
+
+```javascript
+// JavaScript code block
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+console.log(greet('World'));
+```
+
+```python
+# Python code block
+def greet(name):
+    return f"Hello, {name}!"
+
+print(greet("World"))
+```
+
+## Links
+
+[External link to Google](https://www.google.com)
+
+[Internal link to home page](/)
+
+## Images
+
+![Alt text for image](https://via.placeholder.com/150)
+
+## Tables
+
+| Header 1 | Header 2 | Header 3 |
+|----------|----------|----------|
+| Row 1, Col 1 | Row 1, Col 2 | Row 1, Col 3 |
+| Row 2, Col 1 | Row 2, Col 2 | Row 2, Col 3 |
+| Row 3, Col 1 | Row 3, Col 2 | Row 3, Col 3 |
+
+## Horizontal Rule
+
+---
+
+## Line Breaks
+
+This is the first line.  
+And this is the second line.
+
+Or use a blank line for paragraph breaks.
+
+This is a new paragraph.
+
+## HTML in MDX
+
+<div style={{ padding: '20px', backgroundColor: '#f0f0f0', borderRadius: '5px' }}>
+  This is a div with inline styling
+</div>
+
+## JSX Components
+
+You can import and use React components in MDX files:
+
+{/* Example of using a component */}
+{/* <Button>Click me</Button> */}
+
+## Math Expressions
+
+{/* Math expressions require rehype-katex to be installed */}
+{/* 
+Inline math: $E = mc^2$
+
+Block math:
+
+$$
+\frac{d}{dx}e^x = e^x
+$$
+*/}
+
+Math expressions (using HTML):
+<code>E = mc<sup>2</sup></code>
+
+<pre>
+d/dx(e<sup>x</sup>) = e<sup>x</sup>
+</pre>
+
+## Footnotes
+
+{/* Footnotes may not be supported in all MDX processors */}
+{/* 
+Here's a sentence with a footnote.[^1]
+
+[^1]: This is the footnote content.
+*/}
+
+Here's a sentence with a footnote<sup id="fnref-1"><a href="#fn-1">1</a></sup>.
+
+<div id="fn-1">
+  <p>1. This is the footnote content. <a href="#fnref-1">↩</a></p>
+</div>
+
+## Abbreviations
+
+HTML and MDX are abbreviations. 
+
+{/* Abbreviation definitions don't work in all MDX processors */}
+{/* 
+*[HTML]: Hyper Text Markup Language
+*[MDX]: Markdown for the component era
+*/}
+
+<abbr title="Hyper Text Markup Language">HTML</abbr> and <abbr title="Markdown for the component era">MDX</abbr> using HTML tags.
+
+## Definition Lists
+
+<dl>
+  <dt>Term</dt>
+  <dd>Definition for the term</dd>
+  <dd>Another definition for the term</dd>
+  
+  <dt>Another term</dt>
+  <dd>Definition of another term</dd>
+</dl>
+
+{/* Definition lists using Markdown syntax may not be supported in all MDX processors */}
+{/*
+Term
+: Definition for the term
+: Another definition for the term
+
+Another term
+: Definition of another term
+*/}
+
+## Custom Attributes
+
+### Custom ID
+
+<h3 id="custom-id">Custom ID (Using HTML)</h3>
+
+[Link to section with custom ID](#custom-id)
+
+## Emojis
+
+{/* Emoji shortcodes may not be supported in all MDX processors */}
+{/* :smile: :heart: :thumbsup: */}
+
+😄 ❤️ 👍
+
+## Highlighting
+
+<mark>This text is highlighted</mark>
+
+This MDX file showcases the various syntax features available in MDX with the remark-gfm plugin. Not all features may be available depending on your specific MDX configuration and plugins.

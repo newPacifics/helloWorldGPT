@@ -1,5 +1,6 @@
 import { defineDocumentType, makeSource } from 'contentlayer2/source-files'
 import readingTime from 'reading-time'
+import remarkGfm from 'remark-gfm'
 
 export const Content = defineDocumentType(() => ({
   name: 'Content',
@@ -76,7 +77,7 @@ export default makeSource({
   contentDirPath: './app/content',
   documentTypes: [Content],
   mdx: {
-    remarkPlugins: [],
+    remarkPlugins: [remarkGfm],
     rehypePlugins: [],
   },
 })

@@ -21,8 +21,8 @@ export function generateStaticParams() {
   });
 }
 
-export default function PostPage({ params }: any) {
-  const post = getPostBySlug(params.slug);
+export default async function PostPage({ params }: any) {
+  const post = await getPostBySlug(params.slug);
   if (!post) return notFound();
 
   return (

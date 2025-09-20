@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 /* ===== 1) Tailwind layers import ===== */
 
 /* ===== 2) Theme tokens (semantic CSS variables) ===== */
