@@ -55,10 +55,17 @@ export const Content = defineDocumentType(() => ({
     url: {
       type: 'string',
       resolve: (doc) => {
-        const category = doc._raw.sourceFileDir.split('/').pop()
+        const pathParts = doc._raw.sourceFileDir.split('/')
+        const category = pathParts[0]
+        
+        // Handle posts and nested posts (engineering, wanderlog)
         if (category === 'posts') {
-          return `/posts/${doc._raw.flattenedPath.replace('posts/', '')}`
+          // Extract just the filename without folder structure for the URL
+          const filename = doc._raw.sourceFileName.replace('.mdx', '')
+          return `/posts/${filename}`
         }
+        
+        // Handle other content types (quotes, vocabulary)
         return `/${category}/${doc._raw.flattenedPath.replace(`${category}/`, '')}`
       },
     },

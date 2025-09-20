@@ -4,7 +4,7 @@ import { useState } from "react";
 import FootprintDecor from "../ui/footprint-decor";
 
 export default function NavBar() {
-  const [literatureOpen, setLiteratureOpen] = useState(false);
+  const [liberalArtsOpen, setLiberalArtsOpen] = useState(false);
   return (
     <div className="flex flex-col w-full">
       {/* Logo Section */}
@@ -32,12 +32,12 @@ export default function NavBar() {
         <li className="w-full">
           <button
             className="text-left w-full focus:outline-none hover:underline font-semibold pl-2 flex items-center gap-2"
-            onClick={() => setLiteratureOpen((open) => !open)}
+            onClick={() => setLiberalArtsOpen((open) => !open)}
           >
             <img src="/icons/entrance-stairs.svg" alt="" aria-hidden="true" className="h-6 w-6 -ml-0.5" />
             <span>Liberal Arts</span>
             <svg 
-              className={`h-3 w-3 transition-transform duration-200 ${literatureOpen ? 'rotate-90' : ''}`}
+              className={`h-3 w-3 transition-transform duration-200 ${liberalArtsOpen ? 'rotate-90' : ''}`}
               fill="none" 
               stroke="currentColor" 
               viewBox="0 0 24 24"
@@ -46,22 +46,22 @@ export default function NavBar() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
-          {literatureOpen && (
+          {liberalArtsOpen && (
             <ul className="pl-6 flex flex-col gap-2 text-sm font-medium items-start mt-1">
               <li className="w-full">
-                <Link className="hover:underline pl-2 flex items-center gap-2" href="/literature/quotes">
+                <Link className="hover:underline pl-2 flex items-center gap-2" href="/liberalarts/quotes">
                   <img src="/icons/et-quote.svg" alt="" aria-hidden="true" className="h-4 w-4" />
                   <span>Quotes</span>
                 </Link>
               </li>
               <li className="w-full">
-                <Link className="hover:underline pl-2 flex items-center gap-2" href="/literature/library">
+                <Link className="hover:underline pl-2 flex items-center gap-2" href="/liberalarts/library">
                   <img src="/icons/streamline-freehand--disability-blind-read.svg" alt="" aria-hidden="true" className="h-4 w-4" />
                   <span>Library</span>
                 </Link>
               </li>
               <li className="w-full">
-                <Link className="hover:underline pl-2 flex items-center gap-2" href="/literature/vocab">
+                <Link className="hover:underline pl-2 flex items-center gap-2" href="/liberalarts/vocab">
                   <img src="/icons/streamline-ultimate--curly-brackets.svg" alt="" aria-hidden="true" className="h-4 w-4" />
                   <span>Vocab</span>
                 </Link>
