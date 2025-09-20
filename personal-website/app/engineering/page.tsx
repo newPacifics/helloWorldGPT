@@ -16,13 +16,13 @@ export default function EngineeringPage() {
       href: "https://github.com/your-repo/ai-code-assistant",
       category: "AI Web App"
     },
-    {
-      title: "Real-time Analytics Dashboard",
-      description: "A powerful dashboard for monitoring system performance with real-time data visualization and alerts.",
-      image: "/icons/computer-electronics.svg", // Replace with actual product images
-      href: "https://github.com/your-repo/analytics-dashboard",
-      category: "Web App"
-    }
+    // {
+    //   title: "Real-time Analytics Dashboard",
+    //   description: "A powerful dashboard for monitoring system performance with real-time data visualization and alerts.",
+    //   image: "/icons/computer-electronics.svg", // Replace with actual product images
+    //   href: "https://github.com/your-repo/analytics-dashboard",
+    //   category: "Web App"
+    // }
   ];
 
   return (
