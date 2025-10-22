@@ -13,7 +13,7 @@ export default function EngineeringPage() {
       title: "ConVerge - Your Peronsal AI Resume Tailor",
       description: "that fits your resume to the job you're applying to.",
       image: "/icons/carbon-machine-learning-model.svg", // Replace with actual product images
-      href: "https://github.com/your-repo/ai-code-assistant",
+      href: "https://converge-website.vercel.app/",
       category: "AI Web App"
     },
     // {
