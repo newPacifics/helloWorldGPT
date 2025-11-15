@@ -1,0 +1,110 @@
+---
+title: ConVerge High Level Design
+date: 2025-10-21
+author: Sev
+status: published
+tags:
+  - GenAI
+  - engineering
+---
+
+### High-Level Overview
+
+```
+┌─────────────────────────────────────────────────────┐
+│                     INTERNET                        │
+└────────────────────────┬────────────────────────────┘
+                         │
+                    HTTPS (443)
+                         │
+            ┌────────────┴───────────┐
+            │                        │
+            ▼                        │
+    ┌───────────────┐                │
+    │   Browser     │                │
+    │   (Client)    │                │
+    └───────┬───────┘                │
+            │                        │
+            │ HTTPS                  │
+            ▼                        │
+┌──────────────────────────────────────────────┐
+│           Vercel Global CDN                  │
+│                                              │
+│  ┌─────────────────────────────────────┐     │
+│  │       Next.js Frontend              │     │
+│  │                                     │     │
+│  │  - React UI                         │     │
+│  │  - Static pages (SSG)               │     │
+│  │  - API Routes (Serverless)          │     │
+│  │                                     │     │
+│  │  Routes:                            │     │
+│  │  ├─ / (pages)                       │     │
+│  │  └─ /api/*                          │     │
+│  │      ├─ /api/health                 │     │
+│  │      └─ /api/v1/tailor              │     │
+│  └──────────────┬──────────────────────┘     │
+│                 │                            │
+│              Internal                        │
+│              Routing                         │
+│                 │                            │
+│  ┌──────────────▼──────────────────────┐     │
+│  │    MCP Gateway                      │     │
+│  │    (Vercel Serverless Functions)    │     │
+│  │                                     │     │
+│  │  Functions:                         │     │
+│  │  ├─ /health   (GET)                 │     │
+│  │  ├─ /tailor   (POST, SSE)           │     │
+│  │  └─ /         (GET)                 │     │
+│  │                                     │     │
+│  │  Features:                          │     │
+│  │  - SSE streaming                    │     │
+│  │  - Progress updates                 │     │
+│  │  - Error handling                   │     │
+│  └──────────────┬──────────────────────┘     │
+└─────────────────┼────────────────────────────┘
+                  │
+             HTTPS (443)
+             External
+                  │
+                  ▼
+┌────────────────────────────────────────────────┐
+│        AWS Lambda (us-east-1)                  │
+│                                                │
+│  ┌──────────────────────────────────────┐      │
+│  │   Orchestration Function             │      │
+│  │   (Python 3.11)                      │      │
+│  │                                      │      │
+│  │  Components:                         │      │
+│  │  ├─ FastAPI (via Mangum)             │      │
+│  │  ├─ LangGraph workflow               │      │
+│  │  │   ├─ Retrieve node                │      │
+│  │  │   ├─ Transform node               │      │
+│  │  │   └─ Verify node                  │      │
+│  │  └─ ML Models:                       │      │
+│  │      ├─ OpenAI embeddings            │      │
+│  │      └─ Cross-encoder                │      │
+│  │                                      │      │
+│  │  Configuration:                      │      │
+│  │  - Memory: 2048 MB                   │      │
+│  │  - Timeout: 300s (5 min)             │      │
+│  │  - Concurrency: 0-1000               │      │
+│  │  - Function URL: Public              │      │
+│  │                                      │      │
+│  │  Endpoints:                          │      │
+│  │  ├─ /health (GET)                    │      │
+│  │  └─ /tailor (POST)                   │      │
+│  └──────────────┬───────────────────────┘      │
+└─────────────────┼──────────────────────────────┘
+                  │
+            HTTPS (443)
+            External API
+                  │
+                  ▼
+         ┌────────────────────┐
+         │   OpenAI API       │
+         │                    │
+         │  - gpt-4o-mini     │
+         │  - text-embedding  │
+         └────────────────────┘
+```
+
