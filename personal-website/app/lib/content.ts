@@ -58,21 +58,23 @@ export function getPostBySlug(slug: string): Content | undefined {
 export function getAllEngineeringPosts(): Content[] {
   return allContents
     .filter(content => content.slug.startsWith('posts/engineering/'))
+    .filter(content => content.status === 'published')
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
 
 export function getAllWanderlogPosts(): Content[] {
   return allContents
     .filter(content => content.slug.startsWith('posts/wanderlog/'))
+    .filter(content => content.status === 'published')
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
 
 export function getAllQuotes(): Content[] {
-  return getContentByCategory('quotes')
+  return getContentByCategory('quotes').filter(content => content.status === 'published')
 }
 
 export function getAllVocabulary(): Content[] {
-  return getContentByCategory('vocabulary')
+  return getContentByCategory('vocabulary').filter(content => content.status === 'published')
 }
 
 export function getQuoteBySlug(slug: string): Content | undefined {
